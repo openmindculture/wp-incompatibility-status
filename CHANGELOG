@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.1] - Plugin Title: Incompatibility Status - 2022-11-14
+* Removed restricted word from plugin description and widget footer.
+
 ## [1.1.0] - Plugin Title: Incompatibility Status - 2022-11-14
 * Removed restricted word from plugin title.
 
