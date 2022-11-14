@@ -30,6 +30,7 @@ services:
     volumes:
       - wp_data:/var/www/html
       - "./themes:/var/www/html/wp-content/themes"
+      - "./gutenberg-incompatibility-status/trunk:/var/www/html/wp-content/plugins/gutenberg-incompatibility-status"
 
   wordpress-cli:
     container_name: 'local-wp-cli'
@@ -55,10 +56,12 @@ services:
       sleep 10;
       wp core install --path="/var/www/html" --url="http://localhost:8000" --title="Local Wordpress By Docker" --admin_user=admin --admin_password=secret --admin_email=test@example.com;
       wp theme install --activate twentytwentytwo;
+      mkdir -p /var/www/html/wp-content/plugins/gutenberg-incompatibility-status;
       '
     volumes:
       - wp_data:/var/www/html
       - "./themes:/var/www/html/wp-content/themes"
+      - "./gutenberg-incompatibility-status/trunk:/var/www/html/wp-content/plugins/gutenberg-incompatibility-status"
 
 volumes:
   db_data:

@@ -1,0 +1,27 @@
+{
+  "name": "wp-incompatibility-status",
+  "version": "1.0.0",
+  "description": "WordPress plugin to show incompatible settings in WP-Admin",
+  "main": "index.js",
+  "scripts": {
+	  "build:zip": "zip-build build dist --name incompatibility-status --template %NAME%.%EXT%"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openmindculture/wp-incompatibility-status.git"
+  },
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin"
+  ],
+  "author": "Ingo Steinke",
+  "license": "GPLv2 or later",
+  "bugs": {
+    "url": "https://github.com/openmindculture/wp-incompatibility-status/issues"
+  },
+  "homepage": "https://github.com/openmindculture/wp-incompatibility-status#readme",
+  "devDependencies": {
+    "docker-compose": "^0.23.17",
+    "zip-build": "^1.7.0"
+  }
+}
