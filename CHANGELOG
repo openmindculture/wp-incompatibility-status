@@ -1,6 +1,9 @@
 # Changelog
 
-## [1.0.0] - WP Gutenberg Incompatibility Status - First release. - 2022-11-14
+## [1.1.0] - Plugin Title: Incompatibility Status - 2022-11-14
+* Removed restricted word from plugin title.
+
+## [1.0.0] - Incompatibility Status - First release. - 2022-11-14
 - update README
 
 ## [0.0.1] - WP Gutenberg Incompatibility Status - unreleased

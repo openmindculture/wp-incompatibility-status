@@ -1,4 +1,4 @@
-=== Gutenberg Incompatibility Status ===
+=== Incompatibility Status ===
 Contributors: openmindculture
 Tags: compatibility, incompatibility, check, status, admin, gutenberg, block-editor, full-site-editing
 Requires at least: 6.0
@@ -10,9 +10,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Gutenberg Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
+Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
 
-Gutenberg Incompatibility Status is a WordPress plugin that checks for possibly incompatible configurations concerning the new
+Incompatibility Status is a WordPress plugin that checks for possibly incompatible configurations concerning the new
 block editor and full-site editing features of WordPress that might conflict with existing plugins and settings like
 page builders, the classic editor plugin, or themes and plugins that do not support the intended WordPress features yet.
 
@@ -36,7 +36,7 @@ None.
 
 === Development and Contribution ===
 
-Gutenberg Incompatibility Status plugin for WordPress was originally developed by Ingo Steinke (@openmindculture).
+Incompatibility Status plugin for WordPress was originally developed by Ingo Steinke (@openmindculture).
 
 If you want to contribute to this plugin, you can fork the source code at https://github.com/openmindculture/wp-incompatibility-status/
 and open pull requests or issues. You can also open issues on the official WordPress plugin page.
@@ -61,8 +61,11 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 
 == Changelog ==
 
+= 1.1.0 =
+* Removed restricted word from plugin title.
+
 = 1.0.0 =
-* First release.
+* Attempted First release.
 
 == Upgrade Notice ==
 

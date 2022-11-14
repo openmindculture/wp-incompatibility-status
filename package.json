@@ -1,6 +1,6 @@
 {
   "name": "wp-incompatibility-status",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "WordPress plugin to show incompatible settings in WP-Admin",
   "main": "index.js",
   "scripts": {
