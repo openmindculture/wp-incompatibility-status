@@ -12,13 +12,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Gutenberg Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
 
-Gutenberg Incompatibility Status is a WordPress plugin that checks for incompatible configurations concerning the new
+Gutenberg Incompatibility Status is a WordPress plugin that checks for possibly incompatible configurations concerning the new
 block editor and full-site editing features of WordPress that might conflict with existing plugins and settings like
 page builders, the classic editor plugin, or themes and plugins that do not support the intended WordPress features yet.
 
 In your WordPress admin dashboard at `wp-admin`, you should see a status message to inform you about possibly
 incompatible configurations, like using a classic editor together with a block enabled theme, or using full-site-editing
 functionality together with a classic site builder.
+
+A warning about a possible incompatibility does not mean that something is wrong or not working as intended!
+
+As the latest default WordPress themes, like Twenty Twenty-Three, support blocks and full-site editing, it will show up as a potential conflict using that theme together with a classic editor plugin, although this might be exactly what you intended to do. But this warnings can be handy for a quick check of an existing  configuration that you did not set up yourself.
 
 Currently, this plugin only performs rudimentary checks. This will be extended in future versions.
 

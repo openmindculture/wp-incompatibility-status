@@ -20,10 +20,9 @@
  */
 
 if ( is_admin() ) {
-	define( 'openmindculture_gutenbergstatus__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
 	define( 'openmindculture_gutenbergstatus__PLUGIN_VERSION', '1.0.0');
-
-
+	define( 'openmindculture_gutenbergstatus__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 	function openmindculture_gutenbergstatus__dashboard_widgets() {
 		global $wp_meta_boxes;
@@ -33,10 +32,25 @@ if ( is_admin() ) {
 
 	function openmindculture_gutenbergstatus__content() {
 		$details = [];
-		$warnings = 0;
+		$warnings = [];
+		$has_classic_editor = false;
+		$has_custom_gutenberg = false;
+		$has_active_block_theme = false;
 		global $wp_version;
 
-
+		$openmindculture_gutenbergstatus__KNOWN_PLUGINS__CLASSIC = [
+			'classic-editor/classic-editor.php',
+			'disable-gutenberg/disable-gutenberg.php',
+			'enable-classic-editor/enable-classic-editor.php'
+		];
+		$openmindculture_gutenbergstatus__KNOWN_PLUGINS__CUSTOM_BLOCK = [
+			'gutenberg/gutenberg.php'
+		];
+		$openmindculture_gutenbergstatus__BLOCK_THEME_TAGS = [
+			'block-patterns',
+			'block-styles',
+			'full-site-editing'
+		];
 
 		if ($wp_version)
 		{
@@ -47,27 +61,57 @@ if ( is_admin() ) {
 		{
 			array_push($details, 'PHP version: ' . phpversion());
 		}
-		// Gutenberg (via plugin) version, if any
-		// site builders or custom editor plugins by known slug name
-		// site builders or custom editor plugins by tag names
-		// active theme capabilities by tag names
 
-		$plugin_entrypoint = WP_PLUGIN_DIR . '/woocommerce/woocommerce.php';
-		$plugin_data = get_plugin_data($plugin_entrypoint);
-		$woocommerce_version = $plugin_data['Version'];
-		if ($woocommerce_version) {
-			array_push($details, "WooCommerce version: $woocommerce_version");
+		$current_theme = wp_get_theme();
+		array_push($details,"Current Theme: " . $current_theme['Name'] . ' ' . $current_theme['Version']);
+
+		$current_theme_tags = $current_theme['Tags'];
+		if (in_array('fse', $current_theme_tags)) {
+			echo "current theme fse";
 		}
+		foreach ($openmindculture_gutenbergstatus__BLOCK_THEME_TAGS as $i => $block_theme_tag) {
+			if (in_array($block_theme_tag, $current_theme_tags)) {
+				array_push($details,"Current Theme supports $block_theme_tag.");
+				$has_active_block_theme = true;
+			}
+		}
+
+		foreach ($openmindculture_gutenbergstatus__KNOWN_PLUGINS__CLASSIC as $i => $relative_plugin_path) {
+			if (is_plugin_active($relative_plugin_path)) {
+				$plugin_entrypoint = WP_PLUGIN_DIR . '/' . $relative_plugin_path;
+				$plugin_data = get_plugin_data($plugin_entrypoint);
+				array_push($details, "Active classic editor plugin: " . $plugin_data['Name'] . ' ' . $plugin_data['Version']);
+				$has_classic_editor = true;
+			}
+		}
+
+		foreach ($openmindculture_gutenbergstatus__KNOWN_PLUGINS__CUSTOM_BLOCK as $i => $relative_plugin_path) {
+			if (is_plugin_active($relative_plugin_path)) {
+				$plugin_entrypoint = WP_PLUGIN_DIR . '/' . $relative_plugin_path;
+				$plugin_data = get_plugin_data($plugin_entrypoint);
+				array_push($details, "Active Gutenberg plugin: " . $plugin_data['Name'] . ' ' . $plugin_data['Version']);
+				$has_custom_gutenberg = true;
+			}
+		}
+
+		if ($has_classic_editor && $has_active_block_theme) {
+			array_push($warnings, "<span class='openmindculture_gutenbergstatus__summary openmindculture_gutenbergstatus__summary--warning'>Conflict: Classic Editor vs. active block theme.</span>");
+		}
+
+		if ($has_classic_editor && $has_custom_gutenberg) {
+			array_push($warnings, "<span class='openmindculture_gutenbergstatus__summary openmindculture_gutenbergstatus__summary--warning'>Conflict: Classic Editor vs. Gutenberg plugin.</span>");
+		}
+
 
 		openmindculture_gutenbergstatus__print_styles();
 
-		if ($warnings > 1)
+		if (count($warnings) > 1)
 		{
 			echo<<<EOT
 <p class="openmindculture_gutenbergstatus__summary openmindculture_gutenbergstatus__summary--warning">$warnings issues might need your attention.</p>
 EOT;
 		}
-		else if ($warnings > 0)
+		else if (count($warnings) > 0)
 		{
 			echo<<<EOT
 <p class="openmindculture_gutenbergstatus__summary openmindculture_gutenbergstatus__summary--warning">One issue might need your attention.</p>
@@ -80,9 +124,21 @@ EOT;
 EOT;
 		}
 
+		/**
+		 * @var int $i
+		 * @var string $warning
+		 */
+		foreach ($warnings as $i => $warning) {
+			echo "$warning";
+		}
+
 		echo '<ul>';
-		foreach ($details as $i => $value) {
-			echo "<li>$value</li>";
+		/**
+		 * @var int $i
+		 * @var string $detail
+		 */
+		foreach ($details as $i => $detail) {
+			echo "<li>$detail</li>";
 		}
 		echo '</ul>';
 
@@ -96,10 +152,10 @@ EOT;
 				font-size: 16px;
 			}
 			.openmindculture_gutenbergstatus__summary::after {
+				display: inline-block;
 				width: 12px;
 				height: 12px;
 				margin-left: 8px;
-				margin-bottom: -8px;
 			}
 			.openmindculture_gutenbergstatus__summary--ok::after {
 				content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64' enable-background='new 0 0 64 64'%3E%3Cpath d='M32,2C15.431,2,2,15.432,2,32c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30C62,15.432,48.568,2,32,2z M25.025,50 l-0.02-0.02L24.988,50L11,35.6l7.029-7.164l6.977,7.184l21-21.619L53,21.199L25.025,50z' fill='%2343a047'/%3E%3C/svg%3E");
