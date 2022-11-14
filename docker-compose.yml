@@ -54,8 +54,7 @@ services:
       /bin/sh -c '
       sleep 10;
       wp core install --path="/var/www/html" --url="http://localhost:8000" --title="Local Wordpress By Docker" --admin_user=admin --admin_password=secret --admin_email=test@example.com;
-      wp theme install --activate twentytwentyone;
-      wp theme install --activate fasto;
+      wp theme install --activate twentytwentytwo;
       '
     volumes:
       - wp_data:/var/www/html
