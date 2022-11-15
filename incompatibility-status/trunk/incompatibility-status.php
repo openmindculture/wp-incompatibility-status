@@ -2,7 +2,7 @@
 /**
  * @package	incompatibility-status
  * @author	Ingo Steinke
- * @version 1.1.1
+ * @version 1.0.0
  *
  * @wordpress-plugin
  * Plugin Name: Incompatibility Status
@@ -11,7 +11,7 @@
  * Plugin URI: https://github.com/openmindculture/wp-incompatibility-status/
  * Description: Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
  * Short Description: Show Gutenberg Incompatibility Status in WP-Admin
- * Version: 1.1.1
+ * Version: 1.0.0
  *  Author: openmindculture
  * Author URI: https://wordpress.org/support/users/openmindculture/
  * Requires at least: 6.0
@@ -19,114 +19,104 @@
  * Requires PHP: 7.4
  */
 
-if ( is_admin() ) {
+if (is_admin()) {
 
-	function openmindculture_wpstatus__dashboard_widgets() {
-		global $wp_meta_boxes;
-
-		wp_add_dashboard_widget('custom_help_widget', 'Incompatibility Warnings', 'openmindculture_wpstatus__content');
+	function openmindcultureWpstatusDashboardWidgets()
+	{
+		wp_add_dashboard_widget('custom_help_widget', 'Incompatibility Warnings', 'openmindcultureWpstatusContent');
 	}
 
-	function openmindculture_wpstatus__content() {
+	function openmindcultureWpstatusContent()
+	{
 		$details = [];
 		$warnings = [];
-		$has_classic_editor = false;
-		$has_custom_gutenberg = false;
-		$has_active_block_theme = false;
+		$hasClassicEditor = false;
+		$hasCustomGutenberg = false;
+		$hasActiveBlockTheme = false;
 		global $wp_version;
 
-		$openmindculture_wpstatus__KNOWN_PLUGINS__CLASSIC = [
+		$classicEditorPlugins = [
 			'classic-editor/classic-editor.php',
 			'disable-gutenberg/disable-gutenberg.php',
 			'enable-classic-editor/enable-classic-editor.php'
 		];
-		$openmindculture_wpstatus__KNOWN_PLUGINS__CUSTOM_BLOCK = [
+		$customBlockPlugins = [
 			'gutenberg/gutenberg.php'
 		];
-		$openmindculture_wpstatus__BLOCK_THEME_TAGS = [
+		$blockThemeTags = [
 			'block-patterns',
 			'block-styles',
 			'full-site-editing'
 		];
 
-		if ($wp_version)
-		{
-			array_push($details, "WordPress version: $wp_version");
+		if ($wp_version) {
+			$details[] = 'WordPress version:' . esc_html($wp_version);
 		}
 
-		if (phpversion())
-		{
-			array_push($details, 'PHP version: ' . phpversion());
+		if (phpversion()) {
+			$details[] = 'PHP version: ' . esc_html(phpversion());
 		}
 
-		$current_theme = wp_get_theme();
-		array_push($details,"Current Theme: " . $current_theme['Name'] . ' ' . $current_theme['Version']);
+		$currentTheme = wp_get_theme();
+		$details[] = 'Current Theme: ' . esc_html($currentTheme['Name']). ' ' . esc_html($currentTheme['Version']);
 
-		$current_theme_tags = $current_theme['Tags'];
-		if (in_array('fse', $current_theme_tags)) {
-			echo "current theme fse";
-		}
-		foreach ($openmindculture_wpstatus__BLOCK_THEME_TAGS as $i => $block_theme_tag) {
-			if (in_array($block_theme_tag, $current_theme_tags)) {
-				array_push($details,"Current Theme supports $block_theme_tag.");
-				$has_active_block_theme = true;
+		$currentThemeTags = $currentTheme['Tags'];
+
+		foreach ($blockThemeTags as $block_theme_tag) {
+			if (in_array($block_theme_tag, $currentThemeTags)) {
+				$details[] = 'Current Theme supports ' . esc_html($block_theme_tag) . '.';
+				$hasActiveBlockTheme = true;
 			}
 		}
 
-		foreach ($openmindculture_wpstatus__KNOWN_PLUGINS__CLASSIC as $i => $relative_plugin_path) {
+		foreach ($classicEditorPlugins as $relative_plugin_path) {
 			if (is_plugin_active($relative_plugin_path)) {
-				$plugin_entrypoint = WP_PLUGIN_DIR . '/' . $relative_plugin_path;
-				$plugin_data = get_plugin_data($plugin_entrypoint);
-				array_push($details, "Active classic editor plugin: " . $plugin_data['Name'] . ' ' . $plugin_data['Version']);
-				$has_classic_editor = true;
+				$pluginEntrypoint = WP_PLUGIN_DIR . '/' . $relative_plugin_path;
+				$pluginData = get_plugin_data($pluginEntrypoint);
+				$details[] = 'Active classic editor plugin: ' . $pluginData['Name'] . ' ' . $pluginData['Version'];
+				$hasClassicEditor = true;
 			}
 		}
 
-		foreach ($openmindculture_wpstatus__KNOWN_PLUGINS__CUSTOM_BLOCK as $i => $relative_plugin_path) {
+		foreach ($customBlockPlugins as $relative_plugin_path) {
 			if (is_plugin_active($relative_plugin_path)) {
-				$plugin_entrypoint = WP_PLUGIN_DIR . '/' . $relative_plugin_path;
-				$plugin_data = get_plugin_data($plugin_entrypoint);
-				array_push($details, "Active Gutenberg plugin: " . $plugin_data['Name'] . ' ' . $plugin_data['Version']);
-				$has_custom_gutenberg = true;
+				$pluginEntrypoint = WP_PLUGIN_DIR . '/' . $relative_plugin_path;
+				$pluginData = get_plugin_data($pluginEntrypoint);
+				$details[] = 'Active Gutenberg plugin: ' . $pluginData['Name'] . ' ' . $pluginData['Version'];
+				$hasCustomGutenberg = true;
 			}
 		}
 
-		if ($has_classic_editor && $has_active_block_theme) {
-			array_push($warnings, "<span class='openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning'>Conflict: Classic Editor vs. active block theme.</span>");
+		if ($hasClassicEditor && $hasActiveBlockTheme) {
+			$warnings[] = 'Conflict: Classic Editor vs. active block theme.';
 		}
 
-		if ($has_classic_editor && $has_custom_gutenberg) {
-			array_push($warnings, "<span class='openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning'>Conflict: Classic Editor vs. Gutenberg plugin.</span>");
+		if ($hasClassicEditor && $hasCustomGutenberg) {
+			$warnings[] = 'Conflict: Classic Editor vs. Gutenberg plugin.';
 		}
 
+		openmindcultureWpstatusPrintStyles();
 
-		openmindculture_wpstatus__print_styles();
-
-		if (count($warnings) > 1)
-		{
-			echo<<<EOT
-<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">$warnings issues might need your attention.</p>
-EOT;
-		}
-		else if (count($warnings) > 0)
-		{
-			echo<<<EOT
-<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">One issue might need your attention.</p>
-EOT;
-		}
-		else
-		{
-			echo<<<EOT
-<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--ok">No critical issues detected.</p>
-EOT;
+		if (count($warnings) > 1) {
+			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">';
+			echo esc_html(count($warnings));
+			echo ' issues might need your attention.</p>';
+		} elseif (!empty($warnings)) {
+			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">';
+			echo 'One issue might need your attention.</p>';
+		} else {
+			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--ok">';
+			echo 'No critical issues detected.</p>';
 		}
 
 		/**
 		 * @var int $i
 		 * @var string $warning
 		 */
-		foreach ($warnings as $i => $warning) {
-			echo "$warning";
+		foreach ($warnings as $warning) {
+			echo '<div class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">';
+			echo esc_html($warning);
+			echo '</div>';
 		}
 
 		echo '<ul>';
@@ -134,35 +124,19 @@ EOT;
 		 * @var int $i
 		 * @var string $detail
 		 */
-		foreach ($details as $i => $detail) {
-			echo "<li>$detail</li>";
+		foreach ($details as $detail) {
+			echo '<li>' . esc_html($detail) . '</li>';
 		}
 		echo '</ul>';
 
-		echo '<p>This message is generated by the <b>Incompatibility Status</b> plugin currently active on this site. You can disable the plugin on the <a href="plugins.php">plugins page</a>.</p>';
+		echo '<p>This message is generated by the <b>Incompatibility Status</b> plugin currently active on this site.';
+		echo 'You can disable the plugin on the <a href="plugins.php">plugins page</a>.</p>';
 	}
 
-	function openmindculture_wpstatus__print_styles() {
-		?>
-		<style>
-			.openmindculture_wpstatus__summary {
-				font-size: 16px;
-			}
-			.openmindculture_wpstatus__summary::after {
-				display: inline-block;
-				width: 12px;
-				height: 12px;
-				margin-left: 8px;
-			}
-			.openmindculture_wpstatus__summary--ok::after {
-				content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64' enable-background='new 0 0 64 64'%3E%3Cpath d='M32,2C15.431,2,2,15.432,2,32c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30C62,15.432,48.568,2,32,2z M25.025,50 l-0.02-0.02L24.988,50L11,35.6l7.029-7.164l6.977,7.184l21-21.619L53,21.199L25.025,50z' fill='%2343a047'/%3E%3C/svg%3E");
-			}
-			.openmindculture_wpstatus__summary--warning::after {
-				content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20'%3E%3Ctitle%3E alert %3C/title%3E%3Cstyle type='text/css'%3E* %7B fill: %23fc3 %7D%3C/style%3E%3Cpath d='M19.64 16.36L11.53 2.3A1.85 1.85 0 0 0 10 1.21 1.85 1.85 0 0 0 8.48 2.3L.36 16.36C-.48 17.81.21 19 1.88 19h16.24c1.67 0 2.36-1.19 1.52-2.64zM11 16H9v-2h2zm0-4H9V6h2z'/%3E%3C/svg%3E");
-			}
-		</style>
-		<?php
+	function openmindcultureWpstatusPrintStyles()
+	{
+		echo '<link rel="stylesheet" href="'. plugin_dir_url(__FILE__) . 'styles.css">';
 	}
 
-	add_action('wp_dashboard_setup', 'openmindculture_wpstatus__dashboard_widgets');
+	add_action('wp_dashboard_setup', 'openmindcultureWpstatusDashboardWidgets');
 }
