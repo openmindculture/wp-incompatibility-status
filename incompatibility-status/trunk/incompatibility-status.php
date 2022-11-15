@@ -22,8 +22,6 @@
 if ( is_admin() ) {
 
 	function openmindculture_wpstatus__dashboard_widgets() {
-		global $wp_meta_boxes;
-
 		wp_add_dashboard_widget('custom_help_widget', 'Incompatibility Warnings', 'openmindculture_wpstatus__content');
 	}
 
@@ -104,21 +102,17 @@ if ( is_admin() ) {
 
 		if (count($warnings) > 1)
 		{
-			echo<<<EOT
-<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">$warnings issues might need your attention.</p>
-EOT;
+			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">';
+			echo $warnings; // TODO escape
+			echo 'issues might need your attention.</p>';
 		}
 		else if (count($warnings) > 0)
 		{
-			echo<<<EOT
-<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">One issue might need your attention.</p>
-EOT;
+			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">One issue might need your attention.</p>';
 		}
 		else
 		{
-			echo<<<EOT
-<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--ok">No critical issues detected.</p>
-EOT;
+			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--ok">No critical issues detected.</p>';
 		}
 
 		/**
@@ -126,7 +120,7 @@ EOT;
 		 * @var string $warning
 		 */
 		foreach ($warnings as $i => $warning) {
-			echo "$warning";
+			echo $warning; // TODO escape
 		}
 
 		echo '<ul>';
@@ -143,25 +137,10 @@ EOT;
 	}
 
 	function openmindculture_wpstatus__print_styles() {
-		?>
-		<style>
-			.openmindculture_wpstatus__summary {
-				font-size: 16px;
-			}
-			.openmindculture_wpstatus__summary::after {
-				display: inline-block;
-				width: 12px;
-				height: 12px;
-				margin-left: 8px;
-			}
-			.openmindculture_wpstatus__summary--ok::after {
-				content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64' enable-background='new 0 0 64 64'%3E%3Cpath d='M32,2C15.431,2,2,15.432,2,32c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30C62,15.432,48.568,2,32,2z M25.025,50 l-0.02-0.02L24.988,50L11,35.6l7.029-7.164l6.977,7.184l21-21.619L53,21.199L25.025,50z' fill='%2343a047'/%3E%3C/svg%3E");
-			}
-			.openmindculture_wpstatus__summary--warning::after {
-				content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20'%3E%3Ctitle%3E alert %3C/title%3E%3Cstyle type='text/css'%3E* %7B fill: %23fc3 %7D%3C/style%3E%3Cpath d='M19.64 16.36L11.53 2.3A1.85 1.85 0 0 0 10 1.21 1.85 1.85 0 0 0 8.48 2.3L.36 16.36C-.48 17.81.21 19 1.88 19h16.24c1.67 0 2.36-1.19 1.52-2.64zM11 16H9v-2h2zm0-4H9V6h2z'/%3E%3C/svg%3E");
-			}
-		</style>
-		<?php
+		$styles = file_get_contents(__DIR__ . '/styles.css');
+		echo '<style>';
+		echo $styles; // TODO escape
+		echo '</style>';
 	}
 
 	add_action('wp_dashboard_setup', 'openmindculture_wpstatus__dashboard_widgets');
