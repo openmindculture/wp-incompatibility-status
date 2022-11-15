@@ -5,4 +5,5 @@ data
 wordpress
 .wp-cli
 !.wp-cli/cache
+wp_data
 .idea

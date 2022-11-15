@@ -10,6 +10,8 @@ This plugin checks for possible mismatching setups and displays a status in the 
 
 Follow the [detailled WordPress plugin development guidelines](https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/).
 
+In JetBrains IDEA (PhpStorm, WebStorm, etc.) enable WordPress support and set `wp_data` as WordPress path, so that the local code inspections like SonarLint can recognize the built-in functions. You can still mark the directory as excluded to avoid unnecessary indexing and search results.
+
 ### SVN Release Tags
 
 We use `git` branches and tags for feature development, and `svn` to release to the WordPress plugin directory. So all development is done in `incompatibility-status/trunk`!
