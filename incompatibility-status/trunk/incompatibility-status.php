@@ -2,7 +2,7 @@
 /**
  * @package	incompatibility-status
  * @author	Ingo Steinke
- * @version 1.1.1
+ * @version 1.0.0
  *
  * @wordpress-plugin
  * Plugin Name: Incompatibility Status
@@ -11,7 +11,7 @@
  * Plugin URI: https://github.com/openmindculture/wp-incompatibility-status/
  * Description: Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
  * Short Description: Show Gutenberg Incompatibility Status in WP-Admin
- * Version: 1.1.1
+ * Version: 1.0.0
  *  Author: openmindculture
  * Author URI: https://wordpress.org/support/users/openmindculture/
  * Requires at least: 6.0

@@ -61,14 +61,8 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 
 == Changelog ==
 
-= 1.1.1 =
-* Removed restricted word from plugin description and widget footer.
-
-= 1.1.0 =
-* Removed restricted word from plugin title.
-
 = 1.0.0 =
-* Attempted First release.
+* First release.
 
 == Upgrade Notice ==
 
