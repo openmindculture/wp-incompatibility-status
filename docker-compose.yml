@@ -30,7 +30,7 @@ services:
     volumes:
       - wp_data:/var/www/html
       - "./themes:/var/www/html/wp-content/themes"
-      - "./gutenberg-incompatibility-status/trunk:/var/www/html/wp-content/plugins/gutenberg-incompatibility-status"
+      - "./incompatibility-status/trunk:/var/www/html/wp-content/plugins/incompatibility-status"
 
   wordpress-cli:
     container_name: 'local-wp-cli'
@@ -61,7 +61,7 @@ services:
     volumes:
       - wp_data:/var/www/html
       - "./themes:/var/www/html/wp-content/themes"
-      - "./gutenberg-incompatibility-status/trunk:/var/www/html/wp-content/plugins/gutenberg-incompatibility-status"
+      - "./incompatibility-status/trunk:/var/www/html/wp-content/plugins/incompatibility-status"
 
 volumes:
   db_data:
