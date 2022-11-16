@@ -21,12 +21,18 @@
 
 if (is_admin()) {
 
-	function openmindcultureWpstatusDashboardWidgets()
+	function openmindculture_wpstatusDashboardWidgets()
 	{
-		wp_add_dashboard_widget('custom_help_widget', 'Incompatibility Warnings', 'openmindcultureWpstatusContent');
+		wp_add_dashboard_widget('custom_help_widget', 'Incompatibility Warnings', 'openmindculture_wpstatusContent');
+		add_action( 'admin_enqueue_scripts', 'openmindculture_wpstatusEnqueueAdminStyles' );
 	}
 
-	function openmindcultureWpstatusContent()
+	function openmindculture_wpstatusEnqueueAdminStyles()
+	{
+		wp_enqueue_style('openmindculture_wpstatusAdminStylesFile', plugin_dir_url(__FILE__).'styles.css');
+	}
+
+	function openmindculture_wpstatusContent()
 	{
 		$details = [];
 		$warnings = [];
@@ -95,8 +101,6 @@ if (is_admin()) {
 			$warnings[] = 'Conflict: Classic Editor vs. Gutenberg plugin.';
 		}
 
-		openmindcultureWpstatusPrintStyles();
-
 		if (count($warnings) > 1) {
 			echo '<p class="openmindculture_wpstatus__summary openmindculture_wpstatus__summary--warning">';
 			echo esc_html(count($warnings));
@@ -110,7 +114,6 @@ if (is_admin()) {
 		}
 
 		/**
-		 * @var int $i
 		 * @var string $warning
 		 */
 		foreach ($warnings as $warning) {
@@ -121,7 +124,6 @@ if (is_admin()) {
 
 		echo '<ul>';
 		/**
-		 * @var int $i
 		 * @var string $detail
 		 */
 		foreach ($details as $detail) {
@@ -133,10 +135,5 @@ if (is_admin()) {
 		echo 'You can disable the plugin on the <a href="plugins.php">plugins page</a>.</p>';
 	}
 
-	function openmindcultureWpstatusPrintStyles()
-	{
-		echo '<link rel="stylesheet" href="'. plugin_dir_url(__FILE__) . 'styles.css">';
-	}
-
-	add_action('wp_dashboard_setup', 'openmindcultureWpstatusDashboardWidgets');
+	add_action('wp_dashboard_setup', 'openmindculture_wpstatusDashboardWidgets' );
 }
