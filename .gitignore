@@ -1,6 +1,6 @@
 themes/
 node_modules
-
+vendor
 data
 wordpress
 .wp-cli
