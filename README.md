@@ -14,6 +14,12 @@ In JetBrains IDEA (PhpStorm, WebStorm, etc.) enable WordPress support and set `w
 
 Some SonarLint warnings (and PHP PSR conventions) should be ignored, like avoiding underscores in function names. As we operate in a global namespace shared with other plugins, it is considered best practice to use a unique prefix for identifiers used for `function`, `class`, and `define`.
 
+A local code sniffer validation can be set up using the provided `composer.json` configuration. Note that this currently does not work with PHP 8, so you need to use a PHP 7.4 runtime (`/usr/bin/php74`). You may need to adjust the IDE settings to WordPress coding standards and code sniffer configurations according to the provided tutorial.
+
+- https://packagist.org/packages/wp-coding-standards/wpcs
+- https://www.jetbrains.com/help/idea/using-php-code-sniffer.html#installing-configuring-code-sniffer
+- https://www.linuxbabe.com/ubuntu/php-multiple-versions-ubuntu
+
 ### SVN Release Tags
 
 We use `git` branches and tags for feature development, and `svn` to release to the WordPress plugin directory. So all development is done in `incompatibility-status/trunk`!
