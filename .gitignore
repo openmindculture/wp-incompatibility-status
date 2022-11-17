@@ -7,3 +7,4 @@ wordpress
 !.wp-cli/cache
 wp_data
 .idea
+.svn
