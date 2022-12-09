@@ -6,6 +6,10 @@ This plugin checks for possible mismatching setups and displays a status in the 
 
 ![Screenshot collage](incompatibility-status/assets/banner-772x250.png)
 
+## Usage
+
+The incompatibility status widget can be used for existing WordPress sites and for local setups like [wp_cli_docker](https://github.com/openmindculture/wp_cli_docker). Both tools aim to provide a quick and easy way to ensure compatibility of WordPress core versions, plugins, themes, and server configurations (PHP version etc.) to prevent fatal errors after updating production sites.
+
 ## Development
 
 Follow the [detailled WordPress plugin development guidelines](https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/).
