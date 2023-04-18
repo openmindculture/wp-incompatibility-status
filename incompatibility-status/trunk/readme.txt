@@ -61,6 +61,9 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 
 == Changelog ==
 
+= 1.2.0 =
+* Compatibility Release for WordPress 6.2 (2023-04-18)
+
 = 1.0.0 =
 * First release.
 
