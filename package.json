@@ -1,6 +1,6 @@
 {
   "name": "wp-incompatibility-status",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "WordPress plugin to show incompatible settings in WP-Admin",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/openmindculture/wp-incompatibility-status#readme",
   "devDependencies": {
-    "docker-compose": "^0.23.17",
+    "docker-compose": "^0.23.19",
     "zip-build": "^1.7.0"
   }
 }
