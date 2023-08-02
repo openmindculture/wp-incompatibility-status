@@ -23,7 +23,7 @@ if (is_admin()) {
 
 	function openmindculture_wpstatusDashboardWidgets()
 	{
-		wp_add_dashboard_widget('custom_help_widget', 'Incompatibility Warnings', 'openmindculture_wpstatusContent');
+		wp_add_dashboard_widget('custom_help_widget', 'Compatibility Status', 'openmindculture_wpstatusContent');
 		add_action( 'admin_enqueue_scripts', 'openmindculture_wpstatusEnqueueAdminStyles' );
 	}
 
