@@ -61,6 +61,11 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 
 == Changelog ==
 
+= 1.3.0 =
+* Compatibility Release for WordPress 6.3 (tested with RC2 beta) (2023-08-02)
+* Change dashboard title to avoid perceived false positive "warning" status
+  see: https://github.com/openmindculture/wp-incompatibility-status/issues/9
+
 = 1.2.0 =
 * Compatibility Release for WordPress 6.2 (2023-04-18)
 
