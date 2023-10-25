@@ -2,9 +2,9 @@
 Contributors: openmindculture
 Tags: compatibility, incompatibility, check, status, admin, gutenberg, block-editor, full-site-editing
 Requires at least: 6.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,9 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 
 == Changelog ==
 
+= 1.3.1 =
+* Compatibility with WordPress 6.4 (2023-10-25)
+
 = 1.3.0 =
 * Compatibility Release for WordPress 6.3 (tested with RC2 beta) (2023-08-02)
 * Change dashboard title to avoid perceived false positive "warning" status
@@ -73,6 +76,9 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 * First release.
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+* Compatibility with WordPress 6.4 (2023-10-25)
 
 = 1.0.0 =
 * First release.
