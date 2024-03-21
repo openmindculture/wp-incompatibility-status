@@ -46,6 +46,8 @@ cd incompatibility-status/tags
 zip incompatibility-status-1.0.0.zip 1.0.0
 ```
 
+If this does not works (e.g. results in an empty archive) try zipping the current trunk instead of the linked version or rename `trunk` to `incompatibility-status` temporarily and create and archive using your preferred zipping application.
+
 The resulting zip archive file can be uploaded into an existing WordPress instance to verify that it works.
 
 Commit the result to both repositories:
