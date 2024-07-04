@@ -1,10 +1,10 @@
 === Incompatibility Status ===
 Contributors: openmindculture
-Tags: compatibility, incompatibility, check, status, admin, gutenberg, block-editor, full-site-editing
+Tags: compatibility, incompatibility, check, status, admin
 Requires at least: 6.0
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,12 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 1. This screen shows the status information in the WordPress admin dashboard
 
 == Changelog ==
+
+= 1.3.3 =
+* Compatibility with WordPress 6.6 (2024-07-04)
+
+= 1.3.2 =
+* Compatibility with WordPress 6.5
 
 = 1.3.1 =
 * Compatibility with WordPress 6.4 (2023-10-25)
