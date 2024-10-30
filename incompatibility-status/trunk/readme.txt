@@ -2,7 +2,7 @@
 Contributors: openmindculture
 Tags: compatibility, incompatibility, check, status, admin
 Requires at least: 6.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 1.3.3
 License: GPLv2 or later
@@ -60,6 +60,9 @@ Currently, this plugin only performs rudimentary checks. This will be extended i
 1. This screen shows the status information in the WordPress admin dashboard
 
 == Changelog ==
+
+= 1.3.4 =
+* Compatibility with WordPress 6.7 (2024-10-30)
 
 = 1.3.3 =
 * Compatibility with WordPress 6.6 (2024-07-04)

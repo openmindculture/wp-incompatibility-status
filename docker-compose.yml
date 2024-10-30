@@ -18,8 +18,8 @@ services:
     container_name: 'local-wp'
     depends_on:
       - db
-    image: 'wordpress:latest'
-    # image: 'wordpress:beta-6.3-RC2-php8.0'
+    # image: 'wordpress:latest'
+    image: 'wordpress:beta-6.7-RC2-php8.1'
     ports:
       - '8000:80'
     environment:
