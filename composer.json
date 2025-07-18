@@ -10,7 +10,7 @@
 		}
 	],
 	"require": {
-		"php": "^7.4"
+		"php": "^7.2 || ^8.2"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^3.7.1",
@@ -22,7 +22,7 @@
 		"optimize-autoloader": true,
 		"sort-packages": true,
 		"platform": {
-			"php": "7.4"
+			"php": "^7.2 || ^8.2"
 		}
 	},
 	"extra": {

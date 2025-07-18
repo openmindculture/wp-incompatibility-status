@@ -1,4 +1,3 @@
-version: '3.3'
 services:
 
   db:
@@ -19,7 +18,7 @@ services:
     depends_on:
       - db
     # image: 'wordpress:latest'
-    image: 'wordpress:beta-6.7-RC2-php8.1'
+    image: 'wordpress:6.8-php8.4-apache'
     ports:
       - '8000:80'
     environment:
