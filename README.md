@@ -37,6 +37,12 @@ ln -s ../trunk 1.0.0
 
 Replace `1.0.0` with the new release tag name.
 
+Alternatively, copy the content:
+
+```
+   svn copy ^/trunk ^/tags/1.0.0 -m "WordPress 6.7.8 compatibility"
+```
+
 ### Verify the Plugin before committing
 
 To verify the release, create an archive file of the tag directory, e.g.
