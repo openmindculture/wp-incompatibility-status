@@ -37,11 +37,7 @@ ln -s ../trunk 1.0.0
 
 Replace `1.0.0` with the new release tag name.
 
-Alternatively, copy the content:
-
-```
-   svn copy ^/trunk ^/tags/1.0.0 -m "WordPress 6.7.8 compatibility"
-```
+Alternatively, copy the content using `svn copy`.
 
 ### Verify the Plugin before committing
 
@@ -49,16 +45,21 @@ To verify the release, create an archive file of the tag directory, e.g.
 
 ```
 cd incompatibility-status/tags
-zip incompatibility-status-1.0.0.zip 1.0.0
+zip -r incompatibility-status-1.0.0.zip 1.0.0
 ```
 
 If this does not works (e.g. results in an empty archive) try zipping the current trunk instead of the linked version or rename `trunk` to `incompatibility-status` temporarily and create and archive using your preferred zipping application.
 
 The resulting zip archive file can be uploaded into an existing WordPress instance to verify that it works.
 
+Move the archive file to `/dist` before committing.
+
 Commit the result to both repositories:
 
+(assuming we use the command line in the project root directory)
+
 ```
+git add .
 git commit -a
 git push
 git tag "1.0.0"

@@ -2,7 +2,7 @@
 /**
  * @package	incompatibility-status
  * @author	Ingo Steinke
- * @version 1.3.4
+ * @version 1.3.6
  *
  * @wordpress-plugin
  * Plugin Name: Incompatibility Status
@@ -15,7 +15,7 @@
  *  Author: openmindculture
  * Author URI: https://wordpress.org/support/users/openmindculture/
  * Requires at least: 6.0
- * Tested up to: 6.7
+ * Tested up to: 6.9
  * Requires PHP: 7.4
  */
 
