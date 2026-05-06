@@ -2,15 +2,17 @@
 Contributors: openmindculture
 Tags: compatibility, incompatibility, check, status, admin
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.2
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
+
+In 2026, this plugin is not deprecated but practically obsolete. Version 1.3.7 has been tested successfully with WordPress 7.0 (RC 2) and PHP 8.5, however.
 
 Incompatibility Status is a WordPress plugin that checks for possibly incompatible configurations concerning the new
 block editor and full-site editing features of WordPress that might conflict with existing plugins and settings like
