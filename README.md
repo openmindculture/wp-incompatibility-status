@@ -2,13 +2,15 @@
 
 [Incompatibility Status](https://wordpress.org/plugins/incompatibility-status/)  adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
 
-This plugin checks for possible mismatching setups and displays a status in the admin dashboard. Currently checks if a WordPress instance has an active classic editor plugin while using a block theme as the current theme. It also checks and displays the current PHP version. We will check full-site editing vs. incompatible popular plugins in the future.
+Developed and maintained by Berlin-based creative web developer Ingo Steinke (openmindculture), this plugin checks for possible mismatching setups and displays a status in the admin dashboard. Currently checks if a WordPress instance has an active classic editor plugin while using a block theme as the current theme. It also checks and displays the current PHP version. We will check full-site editing vs. incompatible popular plugins in the future.
 
 ![Screenshot collage](incompatibility-status/assets/banner-772x250.png)
 
 ### Obsoletion
 
 This plugin is not deprecated but practically obsolete.
+
+Version 1.3.8 has been tested successfully with WordPress 7.1 and PHP 8.5 in August 2026, however, to ensure long-term compatibilty. It also serves as an example of how to code, publish and maintain a WordPress plugin.
 
 ## Usage
 
@@ -52,7 +54,7 @@ cd incompatibility-status/tags
 zip -r incompatibility-status-1.0.0.zip 1.0.0
 ```
 
-If this does not works (e.g. results in an empty archive) try zipping the current trunk instead of the linked version or rename `trunk` to `incompatibility-status` temporarily and create and archive using your preferred zipping application.
+If this does not work (e.g. results in an empty archive) try zipping the current trunk instead of the linked version or rename `trunk` to `incompatibility-status` temporarily and create and archive using your preferred zipping application.
 
 The resulting zip archive file can be uploaded into an existing WordPress instance to verify that it works.
 
