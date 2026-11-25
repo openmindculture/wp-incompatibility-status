@@ -7,7 +7,6 @@
  * @wordpress-plugin
  * Plugin Name: Incompatibility Status
  * Text Domain: incompatibility-status
- * Domain Path: /languages
  * Plugin URI: https://github.com/openmindculture/wp-incompatibility-status/
  * Description: Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
  * Short Description: Show Gutenberg Incompatibility Status in WP-Admin
