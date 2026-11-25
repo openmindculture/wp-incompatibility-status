@@ -2,17 +2,23 @@
 Contributors: openmindculture
 Tags: compatibility, incompatibility, check, status, admin
 Requires at least: 6.0
-Tested up to: 7.1
-Requires PHP: 7.2
-Stable tag: 1.3.8
+Tested up to: 7.2
+Requires PHP: 7.4
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+== Short Description ==
+
+Show Gutenberg Incompatibility Status in WP-Admin
 
 == Description ==
 
 Incompatibility Status adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing, originally developed and currently maintained by Berlin-based creative web developer Ingo Steinke (openmindculture).
 
-In 2026, this plugin is not deprecated but practically obsolete. Version 1.3.8 has been tested successfully with WordPress 7.1 and PHP 8.5, however.
+In 2026, this plugin is not deprecated but practically obsolete. Version 1.3.8 has been tested successfully with WordPress 7.1 and PHP 8.5, however. WordPress 7.2 and PHP 8.6 compatibility will be verfied in December 2026.
+
+An upcoming new, updated major release will add checks and interpretation to make the Incompatibility Status plugin more relevant and useful again.
 
 Incompatibility Status is a WordPress plugin that checks for possibly incompatible configurations concerning the new
 block editor and full-site editing features of WordPress that might conflict with existing plugins and settings like
