@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0] - unreleased
+
+- WordPress 7.2 compatibility
+- tested up to 7.2 (tested with WP 7.2, PHP 8.6, SQL 8)
+- fix plugin audit findings #15
+
 ## [1.3.8] - 2026-08-28
 
 - WordPress 7.1 compatibility
