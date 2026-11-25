@@ -2,15 +2,25 @@
 
 [Incompatibility Status](https://wordpress.org/plugins/incompatibility-status/)  adds a status message to the admin dashboard to display possible incompatibility issues using the block editor and full-site editing.
 
-Developed and maintained by Berlin-based creative web developer Ingo Steinke (openmindculture), this plugin checks for possible mismatching setups and displays a status in the admin dashboard. Currently checks if a WordPress instance has an active classic editor plugin while using a block theme as the current theme. It also checks and displays the current PHP version. We will check full-site editing vs. incompatible popular plugins in the future.
+Developed and maintained by Berlin-based creative web developer Ingo Steinke (openmindculture), this plugin checks for possible mismatching setups and displays a status in the admin dashboard. Currently checks if a WordPress instance has an active classic editor plugin while using a block theme as the current theme. It also checks and displays the current PHP version.
+
+We will check full-site editing vs. incompatible popular plugins in the future.
+
+### 2.x Roadmap
+
+A new, updated major release will add checks and interpretation to make the Incompatibility Status plugin more relevant and useful again.
+
+As discussed in issue #8, the differentiator should be interpretation, not information collection:
+
+WordPress Site Health tells administrators how their installation is configured and whether general health checks pass. Incompatibility Status should help them understand whether the combination of technologies they have chosen deserves attention.
 
 ![Screenshot collage](incompatibility-status/assets/banner-772x250.png)
 
-### Obsoletion
+### 1.x Obsoletion
 
-This plugin is not deprecated but practically obsolete.
+This plugin is not deprecated but practically obsolete in its original form.
 
-Version 1.3.8 has been tested successfully with WordPress 7.1 and PHP 8.5 in August 2026, however, to ensure long-term compatibilty. It also serves as an example of how to code, publish and maintain a WordPress plugin.
+Version 1.3.8 has been tested successfully with WordPress 7.1 and PHP 8.5 in August 2026, however, to ensure long-term compatibilty. WordPress 7.2 and PHP 8.6 compatibility will be verfied in December 2026. The codebase also still serves as an example of how to code, publish and maintain a WordPress plugin.
 
 ## Usage
 
